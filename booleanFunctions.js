@@ -1,13 +1,14 @@
-var center = new Point(250, 250);
+//code from Justin Bakse's Comp Form class
+var center = new Point(500, 300);
 
 // create the red, rotated square
-var rectangle1 = new Rectangle(new Point(100, 100), new Size(300, 300));
+var rectangle1 = new Rectangle(new Point(100, 100), new Size(400, 300));
 var path1 = new Path.Rectangle(rectangle1);
 path1.strokeColor = 'red';
 path1.rotate(45);
 
 // create the green rectangle
-var rectangle2 = new Rectangle(new Point(0, 100), new Size(250, 300));
+var rectangle2 = new Rectangle(new Point(10, 100), new Size(200, 300));
 var path2 = new Path.Rectangle(rectangle2);
 path2.strokeColor = 'green';
 

@@ -5,7 +5,14 @@
     <!-- Load the Paper.js library -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.2/paper-full.js"></script>
     <!-- Define inlined PaperScript associate it with myCanvas -->
-    <script type="text/paperscript" src="frameEvent.js" canvas="myCanvas"></script>
+    <script type="text/paperscript" src="booleanFunctions.js" canvas="myCanvas"></script>
+    <style type="text/css">
+        /* Scale canvas with resize attribute to full size */
+        canvas[resize] {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 
 <body>
