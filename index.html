@@ -2,21 +2,17 @@
 <html>
 
 <head>
-    <!-- Load the Paper.js library -->
+    <!-- Load the Paper.js and noise library -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.2/paper-full.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.js">
+    </script>
     <!-- Define inlined PaperScript associate it with myCanvas -->
-    <script type="text/paperscript" src="booleanFunctions.js" canvas="myCanvas"></script>
-    <style type="text/css">
-        /* Scale canvas with resize attribute to full size */
-        canvas[resize] {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
+    <script type="text/paperscript" src="noiseDemo.js" canvas="myCanvas"></script>
+
 </head>
 
 <body>
-    <canvas id="myCanvas" resize></canvas>
+    <canvas id="myCanvas" width="800" height="800"></canvas>
 </body>
 
 </html>
