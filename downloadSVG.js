@@ -10,9 +10,11 @@ myPath.moveTo(start);
 myPath.lineTo(start + [100, -50]);
 
 function onMouseDown() {
+    //calling the function: use a string for the file name
     downloadAsSVG("cutFile");
 }
 
+//a function to download the .svg file
 function downloadAsSVG(fileName) {
     // use default name if not provided
     fileName = fileName || "output.svg";
