@@ -1,5 +1,5 @@
-// Please note: dragging and dropping images only works for
-// certain browsers when serving this script online:
+//edited from the image demo on the paper.js site
+
 var path, position, max;
 var count = 0;
 var grow = false;
@@ -44,4 +44,24 @@ function growSpiral() {
     path.add(position + vector - rot);
     path.insert(0, position + vector + rot);
     position += vector;
+}
+
+function resetSpiral() {
+    grow = true;
+
+    // Transform the raster, so it fills the view:
+    raster.fitBounds(view.bounds);
+
+    if (path)
+        path.remove();
+
+    position = view.center;
+    count = 0;
+    path = new Path({
+        fillColor: 'black',
+        closed: true
+    });
+
+    position = view.center;
+    max = Math.min(raster.bounds.width, raster.bounds.height) * 0.5;
 }
