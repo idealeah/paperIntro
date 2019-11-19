@@ -1,5 +1,4 @@
 //edited from the image demo on the paper.js site
-
 var path, position, max;
 var count = 0;
 var grow = false;
