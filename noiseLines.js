@@ -15,7 +15,6 @@ for (i = 0; i < numLines; i++) {
     // Create a Paper.js Path:
     var path = new Path({
         strokeColor: 'red',
-        opacity: .5,
         strokeWidth: 1
     });
 
@@ -46,7 +45,7 @@ function onFrame(event) {
         lineGroup.children[n].smooth();
 
     }
-    downloadAsSVG("lines");
+    //downloadAsSVG("lines");
 
 }
 

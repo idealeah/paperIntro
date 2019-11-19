@@ -1,7 +1,7 @@
 //demo using a simplex noise library, documentation here: https://www.npmjs.com/package/simplex-noise
 //Remember to link the library in index.html
 
-//initialize our simplex noise
+//instantiate our simplex noise
 var simplex = new SimplexNoise();
 
 //create our line parameters
@@ -11,7 +11,6 @@ var stepSize = 800 / numPoints; //distance between points
 // Create a Paper.js Path:
 var path = new Path({
     strokeColor: 'red',
-    opacity: 0.5,
     strokeWidth: 5
 });
 
@@ -35,4 +34,5 @@ function onFrame(event) {
 
     //smooth the path
     path.smooth();
+    console.log(path);
 }
