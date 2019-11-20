@@ -1,5 +1,5 @@
 // Create a Paper.js Path to draw a line into it:
-var path = new Path();
+var path = new Path.Line();
 // Give the stroke a color
 path.strokeColor = 'red';
 var start = new Point(100, 100);

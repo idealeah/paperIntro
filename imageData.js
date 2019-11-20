@@ -3,9 +3,14 @@ var path, position, max;
 var count = 0;
 var grow = false;
 
+//In index.html, you must add an image tag with an id. 
+//You can comment in the image that I've added in index.html
+
 // As the web is asynchronous, we need to wait for the raster to
 // load before we can perform any operation on its pixels.
-var raster = new Raster('assets/skyline.jpg');
+var raster = new Raster('myImage');
+// Move the raster to the center of the view
+raster.position = view.center;
 raster.visible = false;
 raster.on('load', resetSpiral);
 
