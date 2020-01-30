@@ -13,7 +13,7 @@ for (i = 0; i < 10; i++) {
     //add some style
     myPath.style = {
         strokeColor: "black",
-        fillColor: new Color(i * .3, 1, .6), //let's use i to change the color for each shape
+        fillColor: new Color(i * .3, 1, .6, .5), //let's use i to change the color for each shape
         strokeWidth: 10
     }
 
@@ -56,7 +56,7 @@ for (i = 0; i < 3; i++) {
         var path = groupCopy.children[n];
 
         //change the fill color using n (which path) and i (which group) 
-        path.fillColor = new Color(n * .3, i * .3, .6);
+        path.fillColor = new Color(n * .3, i * .3, .6, .5);
     }
 
     //add the new group to allGroups

@@ -1,46 +1,68 @@
-var grid = 5;
-var space = 800 / grid;
+//demo using a simplex noise library, documentation here: https://www.npmjs.com/package/simplex-noise
+//Remember to link the library in index.html
 
-for (x = 0; x < 5; x++) {
-  for (y = 0; y < 5; y++) {
-    var gridX = x * space;
-    var gridY = y * space;
-    var radius = space / 2;
-    var point = new Point(gridX + radius, gridY + radius);
-    var rotation = 0;
-    if (x % 2 == 0 && y % 2 != 0) {
-      rotation = 90;
-    }
-    if (x % 2 != 0 && y % 2 == 0) {
-      rotation = 90;
-    }
-    makeSpike(point, radius, rotation);
+var numLines = 17;
+//initialize our simplex noise
+var simplex = new SimplexNoise();
+
+//create our line parameters
+var numPoints = 500 / 15; //the number of points
+var stepSize = 500 / numPoints; //distance between points
+var lineGroup = new Group();
+
+var centerPoints = 5;
+var centerPath = new Path({
+  strokeColor: "black",
+  strokeWidth: 20
+});
+
+// for (i = 0; i < centerPoints; i++) {
+//   point = new Point(400, i * 800 / centerPoints);
+//   centerPath.add(point);
+// }
+
+for (i = 0; i < numLines; i++) {
+  console.log(i);
+  // Create a Paper.js Path:
+  var path = new Path({
+    strokeColor: "red",
+    strokeWidth: 4
+  });
+
+  //add points to our line:
+  for (n = 0; n < numPoints; n++) {
+    //add our points to the path
+    path.add(new Point(n * stepSize + 20, i * stepSize));
   }
+
+  lineGroup.addChild(path);
 }
 
-function makeSpike(center, radius, rotation) {
-  var spikeRad = radius;
-  for (i = 0; i < 5; i++) {
-    // Create a Paper.js Path:
-    var path = new Path({
-      strokeColor: "red",
-      opacity: 0.5,
-      strokeWidth: 15,
-      center: center,
-      strokeCap: "round"
-    });
+function onFrame(event) {
+  // for (i = 0; i < centerPoints; i++) {
+  //   //get milliseconds
+  //   var millis = event.time;
+  //   var x = simplex.noise2D(i * 5, millis / 20);
+  //   x = (x * 30) + 250;
+  //   centerPath.segments[i].point.x = x;
+  //   centerPath.smooth();
+  // }
 
-    path.add(
-      new Point(center.x - spikeRad, center.y),
-      new Point(center.x + spikeRad, center.y)
-    );
+  for (n = 0; n < numLines; n++) {
+    for (var i = 0; i < numPoints; i++) {
+      //get milliseconds
+      var millis = event.time;
+      //get 2D noise information
+      var y = simplex.noise3D(i / 15, millis / 20, n / 15);
+      //calibrate the y value so it fits the canvas
+      y = (y + n * 0.7) * 50;
+      lineGroup.children[n].segments[i].point.y = y + 45;
+    }
 
-    var turn = 360 / 5;
-    path.rotate(turn * i + rotation);
+    //smooth the path
+    lineGroup.children[n].smooth();
   }
 }
-
-downloadAsSVG("spikes");
 
 function downloadAsSVG(fileName) {
   // use default name if not provided
@@ -57,4 +79,9 @@ function downloadAsSVG(fileName) {
   link.download = fileName;
   link.href = url;
   link.click();
+}
+
+function onMouseDown() {
+  //calling the function: use a string for the file name
+  downloadAsSVG("cutFile.svg");
 }
